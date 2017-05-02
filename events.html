@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prgati 2k17 Events" />
+  <meta name="author" content="Debojyoti Dey & Saptarshi Dey" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/events.css">
+  <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="dist/sweetalert.min.js"></script>
+
+  <style type="text/css">
+    h3{
+      font-family: 'Roboto Slab', serif;
+      font-weight: bold;
+    }
+    body{
+      overflow: auto;
+    }
+    #pragati_home:hover{
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="app">
+      <div id="wrapper" style="overflow-x: auto;">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+            <li><a href="index.html" id="pragati_home"><h2>PRAGATI<span class="glyphicon glyphicon-home" aria-hidden="true"></span></h2></a></li>
+            <hr/>
+            <li class="sidebar-brand">
+              <h3> Robotics</h3>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('robowar')">Robo War</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('robofifa')">Robo Fifa</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('roboranger')">Robo Ranger</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('chasethemaze')">Chase the Maze</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('linefollower')">Line Follower</a>
+            </li>
+            <li class="sidebar-brand">
+              <h3> Gaming</h3>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('dota')">Dota 1.0</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('cs')">Counter Strike 1.6</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('fifa')">Fifa 09</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('nfs')">NFS Most Wanted</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('milimitia')">Mini Militia</a>
+            </li>
+            <li class="sidebar-brand">
+              <h3> Others</h3>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('codefiesta')">Code Fiesta</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('enigma')">Enigma</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('catia')">CATIA</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('circuitdesign')">Circuit Design</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('bigshow')">Big Show</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('treasurehunt')">Treasure Hunt</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('mathemania')">Mathemania</a>
+            </li>
+            <li>
+              <a href="#" v-on:click="load('chess')">Chess</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-lg-12 col-sm-12">
+                <div class="panel with-nav-tabs panel-default">
+                  <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a href="#tab1default" data-toggle="tab">Event Details</a></li>
+                      <li><a href="#tab2default" data-toggle="tab">Registration</a></li>
+                    </ul>
+                  </div>
+                  <div class="panel-body">
+                    <div class="tab-content">
+                      <div class="tab-pane fade in active" id="tab1default">
+                        <template v-if="current_event=='robowar'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>Build a robot whose task is to push the opposing robot out of the circular ring or flip it over. Different robots compete one-on-one against each other in a knock-out tournament.
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>There will be qualifying rounds of 3 minutes and further rounds are of 4 minutes.</li>
+                            <li>If a robot, say R1, is able to drag the opponent's robot, say R2, to death zone twice during the fight, the respective team will be declared as WINNER.</li>
+                            <li>The Bot which got dragged to the death zone must be dragged to its full length.</li>
+                            <li>If both the robots got dragged to the death zone, then both robots should reach their respective start zone immediately. Match and running time will continue after they reach their respective start zone.</li>
+                            <li>If any of the bots is unable to reach to respective start zone due to any type of failure within 1 minute, it may lead to disqualification.</li>
+                            <li>A robot is declared victorious if its opponent is immobilized.</li>
+                            <li>A robot will be declared immobile if it cannot display satisfactory motion of at least one foot in a timed period of 30 seconds</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 4(max)</li>
+                            <li>Registration Fees: Rs.400</li>
+                            <li>Robots per Event: One</li>
+                            <li>Length of Event: 5 mins X (2 rounds)</li>
+                            <li>Robot Weight Range: 5 kg(max)</li>
+                            <li>Robot Dimensions: </li>
+                            <ul>
+                              <li>W:30cm x L:30cm x H:30cm(max)</li>
+                              <li>W:22cm x L:22cm x H:22cm(min)</li>
+                            </ul>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Sumanta Laha- 9903102933</li>
+                            <li>Aman Sharma- 89611 30658</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='roboranger'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>This is a manual robotics event in which the participants need to 
+                            Design a manually controlled robot that can race through all Possible terrains like sand, pebbles, obstacles, bumpers, bridges, Marbles, grease, inclines, dips, cliffs, mazes, ramps, banks, etc.
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>The prelims will be a one-team-at-a-time event.</li>
+                            <li>The robot will start from the point marked as "START" on the arena and will have to traverse through the entire track consisting of multiple obstacles of different types and the surface will keep varying as well.</li>
+                            <li>The race will start the moment the event coordinator gives the green signal and the time keeper will turn on the timer at the same moment.</li>
+                            <li>A team can take a maximum of 1 TIMEOUT for not more than 2 mins. The teams can check and repair their robots during this time. After the TIMEOUT is over, the robot will be placed at the last crossed checkpoint and the race will be continued</li>
+                            <li>One may skip any hurdle if he is not able to cross it. Skip will incur a penalty of 1 min.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 4(max)</li>
+                            <li>Registration Fees: Rs.400</li>
+                            <li>Robots per Event: One</li>
+                            <li>Length of Event: None</li>
+                            <li>Robot Weight Range: 5 kg(max)</li>
+                            <li>Robot Dimensions: </li>
+                            <ul>
+                              <li>W:30cm x L:30cm x H:30cm(max)</li>
+                              <li>W:22cm x L:22cm x H:22cm(min)</li>
+                            </ul>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Sumanta Laha- 9903102933</li>
+                            <li>Aman Sharma- 89611 30658</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='robofifa'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>Design a robot which plays soccer. The robot would compete against others in 1-1 matches.
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>The game will start at the count of 3 given by refree followed by whistle. In case a team starts its robot before the whistle, the game will be restarted and a team making this mistake for more than 3 times will be disqualified.</li>
+                            <li>The field diagram will be uploaded on the website soon.</li>
+                            <li>The ball can be either dragged or pushed by the team.</li>
+                            <li>A robot can extended to a dimension of 500mm x 500mm x 500mm maximum (independently) once it crosses the start zone.</li>
+                            <li>Each goal scored by a team by rolling the ball on the ground will fetch the team 1 point.</li>
+                            <li>The goal post will have a hole on the top. Any team scoring the goal from above will fetch 5 points.</li>
+                            <li>Maximum 2 members per team will be allowed to remain close to field for operating the robots.</li>
+                            <li>In case of jam up of robots for more than 30 seconds the robots will have to kick-off again at the order of the refree..</li>
+                            <li>The robots are not allowed to use grippers or actuations which are intended to harm the opponent's robot.</li>
+                            <li>The competition is aimed at making the game a friendly football match rather than a robo war. We have a separate event for that.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 4(max)</li>
+                            <li>Registration Fees(External Students): Rs.400</li>
+                            <li>Robots per Event: Two</li>
+                            <li>Length of Event: 5 mins X (2 rounds)</li>
+                            <li>Robot Weight Range: 5 kg(max)</li>
+                            <li>Robot Dimensions: </li>
+                            <ul>
+                              <li>W:30cm x L:30cm x H:30cm(max)</li>
+                              <li>W:22cm x L:22cm x H:22cm(min)</li>
+                            </ul>
+                          </ul>
+
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Sumanta Laha- 9903102933</li>
+                            <li>Aman Sharma- 89611 30658</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='chasethemaze'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>To build a robot that is able to navigate out of the maze in the quickest time possible from the designated starting point to the ending point.
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Each team will be given a max of 10 mins.And each team will start with 10X60=600 points.</li>
+                            <li>Time Taken to exit(T.E)=time taken by bot to successfully get out of the maze(in secs).</li>
+                            <li>Stuck(S.T)=In case a robo is stuck in an endless loop in the maze. In every such incidence 10 points will be deducted.</li>
+                            <li>Breakdown(B.K.D)=In any event when the robot breaks down/stops moving/parts fall off/immobolise/cannot function anymore. In every such incidence 15 points will be deducted.</li>
+                            <li>Total Score=600-(T.E+S.T+B.K.D)</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 2(max)</li>
+                            <li>Registration Fees(External Students): Rs.400</li>
+                            <li>Robots per Event: One</li>
+                            <li>Length of Event: 10 mins(max)</li>
+                            <li>Robot Weight Range: 5 kg(max)</li>
+                            <li>Robot Dimensions: </li>
+                            <ul>
+                              <li>W:30cm x L:30cm x H:30cm(max)</li>
+                              <li>W:22cm x L:22cm x H:22cm(min)</li>
+                            </ul>
+                          </ul>
+
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Sumanta Laha- 9903102933</li>
+                            <li>Aman Sharma- 89611 30658</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='linefollower'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>To make a robot to follow a black line on a white background, without losing the line, and navigating several 90 degree turns. The robot to complete the course in the shortest period of time while accurately tracking the course line from start to finish wins.
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>A robot that wanders off the arena surface will be disqualified.A robot shall be deemed to have left the arena when any wheel,leg or track has moved completely off the arena surface</li>
+                            <li>Any robot that loses the line course must reacquire the line at the point where it was lost, or at any earlier(e.g. already traversed)point. If a robot loses line more than 3 times it will be disqualified.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 2(max)</li>
+                            <li>Registration Fees(External Students): Rs.400</li>
+                            <li>Robots per Event: One</li>
+                            <li>Length of Event: 3 mins(max)</li>
+                            <li>Robot Weight Range: 5 kg(max)</li>
+                            <li>Robot Dimensions: </li>
+                            <ul>
+                              <li>W:30cm x L:30cm x H:30cm(max)</li>
+                              <li>W:22cm x L:22cm x H:22cm(min)</li>
+                            </ul>
+                          </ul>
+
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Sumanta Laha- 9903102933</li>
+                            <li>Aman Sharma- 89611 30658</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='dota'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>The Game Mode used is Captains Mode (CM), Tournament Version.</li>
+                            <li>The team playing as the Senteinal or Scourge side will be announced before the match by a toss.</li>
+                            <li>Each team consist of 5 members.</li>
+                            <li>Time limit would of 25 minutes.</li>
+                            <li>
+                              Game Points:
+                              <ul>
+                                <li>1st Kill      30 Points</li>
+                                <li>Hitting Roshan    50 Points</li>
+                                <li>Killing all     10 Points</li>
+                                <li>Destroying Tower    20 Points</li>
+                              </ul>
+                            </li>
+                            <li>Total point: Roshan + First blood + (no. of Tower) * 50 + (no. of Hero kill) * 10 - (no. of Hero death) * 10.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 5</li>
+                            <li>Registration Fees(External Students): Rs.500</li>
+                          </ul>
+
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Subham Sinha- 9386621303</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='cs'">
+                          <h3>General Information</h3>
+                          <hr/>
+                          <ol>
+                            <li>Competition Method: 5 vs. 5 (Team Play, 5 players per team)</li>
+                            <li>Version: Counter Strike 1.6.</li>
+                            <li>Round Time: 2 minute 30 seconds.</li>
+                            <li>Maps will be decided by organising committee</li>
+                            <li>Freeze Time: 0</li>
+                          </ol>                          
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>The team playing as the Terrorist side or Counter terrorist side first will be announced before the match by a toss / Knife round (Depending upon committee decision).</li>
+                            <li>Maps will be given on spot.</li>
+                            <li>Shotguns, Shields, Automatic Sniper, Scout, Creig commando and Bull pup are NOT ALLOWED. </li>
+                            <li>Binding Duck to scroll wheel is NOT permitted.</li>
+                            <li>Any player or team caught breaking a rule or performing an infraction will be subject to disqualification.</li>
+                          </ol>
+                          <h3>Rounds</h3>
+                          <hr/>
+                          <ol>
+                            <li>6 Rounds (Max rounds format)</li>
+                            <li>3 rounds as Terrorists and 3 rounds as Counter-Terrorists per team (If a team scores 2 rounds first, it must switch sides immediately.)</li>
+                            <li>The team who wins 4 round will qualify for the next round. </li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 5</li>
+                            <li>Registration Fees(External Students): Rs.500</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Amar Kumar- 9163974721</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='fifa'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Game Version: FIFA 09. Game mode : KICK OFF.</li>
+                            <li>Tournament Format : 1 v 1 (Player Vs Player).</li>
+                            <li>Time limits for each half would be 4 mins.</li>
+                            <li>Teams and team’s jerseys will be selected by the committee members.</li>
+                            <li>Players will be provided 2 mins for tweaking and configuration of controls, no arguments on this topic will be entertain afterwards.</li>
+                            <li>If someone wants to use their joystick they have to bring their own, College will provide only keyboard.</li>
+                            <li>Setting change other than controls are not allowed by the participants.</li>
+                            <li>Any player caught breaking a rule or performing an infraction will be subject to disqualification.</li>
+                          </ol>  
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 1</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Amit Verma- 8276884376</li>
+                            <li>Prateek Buranwal- 8961879948</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='nfs'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Version : Most Wanted</li>
+                            <li>All the rounds will be knockout.</li>
+                            <li>Race track will.be decided by the Committee members</li>
+                            <li>Decision of the Committee will be final and everyone must follow that.</li>
+                            <li>N2O, collision damage and performance matching will be decided
+                              by organizing committee
+                            </li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 1</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sandeep Kumar- 7059484454</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='milimitia'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>There will be team consisting of 3 players</li>
+                            <li>Game software will be provided by the Committee members</li>
+                            <li>People must take care of their own devices .Whether it's charged or not. If any error occurs the players will be responsible for that.</li>
+                            <li>Maps will be decided by organising committee</li>
+                            <li>Decsion of the Committee members will be final and everyone must follow those</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 3</li>
+                            <li>Registration Fees(External Students): Rs.300</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Kishan Gupta- 8981429323</li>
+                            <li>Ajay Kumar- 8981816198</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='enigma'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>The Quiz is a general Quiz encompassing all spheres of life</li>
+                            <li>Each team shall consist of a Maximum of 3 Members.</li>
+                            <li>There shall be a written Prelim round of 26 questions.</li>
+                            <li>Top 8 teams qualify for the finals.</li>
+                            <li>The Quiz Master's verdict shall be final.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 3(max)</li>
+                            <li>Registration Fees(External Students): Rs.60</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Subham Saha- 9051089153</li>
+                            <li>Surit Bajaj- 8981519031</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='catia'">
+                          <h3>Problem Statement</h3>
+                          <hr/>
+                          <p>Blue Print is a 3D CAD competition of Pragati’15 which gives you a platform to unleash your creative as well as technical skills to solve 3D CAD problems. The problems will be based mainly on Mechanical Engineering or Automobile Engineering domains. 
+                          </p>
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Teams will consist of two undergraduate students from any brunch any year.</li>
+                            <li>Students must bring their own pencils, pens, paper, rulers, and calculators for any calculation. Students will not be allowed to use cell phones.</li>
+                            <li>Student teams are to work independently in completing their design. </li>
+                            <li>Participants have to complete their design in the stipulated time period</li>
+                            <li>Judges decision is the final decision.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 2(max)</li>
+                            <li>Registration Fees(External Students): Rs.60</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sourav Singh- 9038041714</li>
+                            <li>Preetam Das- 98745 86012</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='circuitdesign'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Team can comprise of maximum three members</li>
+                            <li>A problem set will be provided according to which they have to find the requisite parameters to design the circuit</li>
+                            <li>Each team has to pay 100 rupees as caution money which will be refunded after the competition</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 3(max)</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                            <li>Caution Money: Rs.100(To be refunded)</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Vivek Upadhay- 9748274803</li>
+                            <li>Shweta Das- 8981526034</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='bigshow'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>Team size: Maximum 3 members per team.</li>
+                            <li>Quiz will take place in 2 rounds, Prelims and Finals.</li>
+                            <li>Preliminary round being an elimination one. Those teams which qualify the prelims will stay through the end irrespective of performance.</li>
+                            <li>After the prelim round there would be the following rounds. Depending on number of teams rounds can be increased or decreased. Order may vary..</li>
+                            <ul>
+                              <li>G.K</li>
+                              <li>Audio Visual</li>
+                              <li>Surprise event</li>
+                              <li>Quiz</li>
+                              <li>Acting</li>
+                              <li>Testing</li>
+                            </ul>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 3(max)</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Ritesh Kumar- 9749744033</li>
+                            <li>Amit Kumar- 8961205342</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='treasurehunt'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>In this event participants can take part as a team (consisting of max 3 members) or individually.</li>
+                            <li>Clues will be provided to the participants in the forms of puzzles or riddles, decoding the puzzles will lead to the next level with next set of clues. Initially the first clue will be given to the participating teams and a proper decoding of that will lead to clue no. 2. The proper decoding of the puzzle at clue no. 2 workstation will lead to clue no. 3 and so on.</li>
+                            <li>There will be total 6 clues. Proper solving of the last puzzle will lead to the Treasure.</li>
+                            <li>In case of too many registrations a Prelim round will be held to shortlist top few teams/individuals for the Final Round.</li>
+                            <li>Using any unfair means to solve the puzzles will lead to a disqualification of that team or individual.</li>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 3(max)</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Rahul Roy- 9674974004</li>
+                            <li>Rohan Singh- 9831546000</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='mathemania'">
+                          <h3>Introduction</h3>
+                          <hr/>
+                          <ol>
+                            <li>2 members in a team or single participation.</li>
+                            <li>Two rounds will be there</li>
+                            <li>Round 1</li>
+                            <ul>
+                              <li>35 questions each carrying 2 marks</li>
+                              <li>Time limit 45 minutes</li>
+                            </ul>
+                            <li>Round 2</li>
+                            <ul>
+                              <li>Total 30 questions ( 20  MCQ + 10 integer type )</li>
+                              <li>20 mcq each carrying 3 marks for correct answer and -1 for wrong answer</li>
+                              <li>There will be no negative in integer type.(i.e 10 que)</li>
+                              <li>5 star questions will be there in round2</li>
+                            </ul>
+                          </ol>
+                          <h3>Other Details</h3>
+                          <hr/>
+                          <ul>
+                            <li>No. of members: 2(max)</li>
+                            <li>Registration Fees(External Students): Rs.100</li>
+                          </ul>
+                          <h3>Coordinators</h3>
+                          <hr/>
+                          <ol>
+                            <li>Sidra Ezaj - 869744394</li>
+                            <li>Rishabh Kumar- 9748581880</li>
+                          </ol>
+                        </template>
+                        <template v-if="current_event=='codefiesta'">
+                          <h3>Rules</h3>
+                          <hr/>
+                          <ol>
+                            <li>20 MCQ questions for a duration of 30 minutes will be there in the prelims</li>
+                            <li>There were be 3 sets(C,C++ and Java) and the teams will have to select one of these.</li>
+                            <li>In the final round, 3 problem will be given of Easy, Intermediate and Difficult Level.</li>
+                            <li>In case of tie, time will be used as the deciding factor</li>
+                            <li>Decsion of the Committee members will be final and everyone must follow those</li>
+                            </ol>
+                            <h3>Other Details</h3>
+                            <hr/>
+                            <ul>
+                              <li>No. of members: 2(max)</li>
+                              <li>Registration Fees(External Students): Rs.100</li>
+                              <li>All the participants should have an account on Hackerrank</li>
+                            </ul>
+                            <h3>Coordinators</h3>
+                            <hr/>
+                            <ol>
+                              <li>Debojyoti Dey- 9163681875</li>
+                              <li>Saptarshi Dey- 8981235949</li>
+                            </ol>
+                          </template>
+                          <template v-if="current_event=='chess'">
+                            <h3>Rules</h3>
+                            <hr/>
+                            <ol>
+                              <li>Participant can be from any college/university/school</li>
+                              <li>Individual participation</li>
+                              <li>The tournament will be played under standard FIDE chess rules.</li>
+                              <li>This tournament will be played under three stages: Prelims Round, Intermediate Round, Final round</li>
+                              <li>Prelims Round rules:</li>
+                              <ul>
+                                <li>This round will be played on 9th of May.</li>
+                                <li>Selection of opponents of first round will be done by draw.</li>
+                                <li>FIDE Rapid rules will be applied(10 Minutes each)</li>
+                                <li>Tie-break as per FIDE Rules.</li>
+                                <li>Each player will play two matches in this round both drawn by a draw.</li>
+                              </ul>
+                              <li>Intermediate Round</li>
+                              <ul>
+                                <li>This round will be played on 9th of May.</li>
+                                <li>This will be an Elimination round.</li>
+                                <li>Selection of opponents will be done by a draw.</li>
+                                <li>FIDE Rapid rules will be applied (15 minutes).</li>
+                                <li>Top four players will qualify for the Final round.</li>
+                              </ul>
+                              <li>Final Round</li>
+                              <ul>
+                                <li>This round will be played on 10th of May.</li>
+                                <li>This round will be a Swiss league of 3 rounds.</li>
+                                <li>The winner of a game gets 1 point, both the players with a drawn game gets 0.5 points and the loser of a game gets 0 point.</li>
+                                <li>Tie-break as per FIDE Rules.</li>
+                                <li>Player with maximum points will be the Champion.</li>
+                              </ul>
+                            </ol>
+                            <h3>All Players Must...</h3>
+                            <hr/>
+                            <ol>
+                              <li>Properly move all of the chess pieces </li>
+                              <li>Understand pawn promotion.</li>
+                              <li>Understand rules for 'advanced' moves: Castling and En passant capture (note: please ask the organizer in case of any confusion about En passant rule ) </li>
+                              <li>Properly move all of the chess pieces </li>
+                              <li> Understand Check and the ways to get out of check (move, block, capture) </li>
+                              <li>Understand Checkmate </li>
+                              <li>Understand the 'touch-move' rule </li>
+                              <li> Understand 50 moves draw rule i.e. the game can be claimed drawn after 50 moves if there are no pawn moves or no captures. </li>
+                              <li>Understand 3 fold repetition rule. The game can be claimed drawn if the exact same position is repeated thrice.</li>
+                              <li>No outside assistance during games is allowed.</li>
+                              <li>'In case of any dispute or claim, the decision of the co-ordinator will be final and binding to all rules and regulations'</li>
+                            </ol>
+                            <h3>Other Details</h3>
+                            <hr/>
+                            <ul>
+                              <li>No. of members: 1</li>
+                              <li>Registration Fees(External Students): Rs.50</li>
+                            </ul>
+                            <h3>Coordinators</h3>
+                            <hr/>
+                            <ol>
+                              <li>Sourav Singh- 9038041714</li>
+                              <li>Rosan Pattanayak- 9804620310</li>
+                              <li>Bibek Kumar Buranwal- 7686050358</li>
+                            </ol>
+                          </template>
+                        </div>
+                        <div class="tab-pane fade" id="tab2default">
+                          <form id="entry_form">
+                            <div class="form-group">
+                              <template v-if="member_count>1">
+                                <label for="team-name">Team Name</label>
+                                <input type="text" class="form-control" name="TeamName" id="team_mem0">
+                              </template>
+                              <label for="team-name">Member 1</label>
+                              <input type="text" required class="form-control" name="Member1" id="team_mem1">
+                              <template v-if="member_count>1">
+                                <label for="team-name">Member 2</label>
+                                <input type="text" class="form-control" name="Member2" id="team_mem2">
+                              </template>
+                              <template v-if="member_count>2">
+                                <label for="team-name">Member 3</label>
+                                <input type="text" class="form-control" name="Member3" id="team_mem3">
+                              </template>
+                              <template v-if="member_count>3">
+                                <label for="team-name">Member 4</label>
+                                <input type="text" class="form-control" name="Member4" id="team_mem4">
+                              </template>
+                              <template v-if="member_count>4">
+                                <label for="team-name">Member 5</label>
+                                <input type="text" class="form-control" name="Member5" id="team_mem5">
+                              </template>
+                              <label for="team-name">Contact Number</label>
+                              <input type="number" required class="form-control" name="PhoneNo" id="phone">
+                              <label for="team-name">Email</label>
+                              <input type="email" required class="form-control" name="Email" id="email">
+                              <input type="hidden" class="form-control" name="EventName" v-model="current_event" id="event_name">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%">Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+      </div>
+    </div>
+    <!-- Menu Toggle Script -->
+    <script>
+      $(function(){
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    <script src="https://unpkg.com/vue@2.1.3/dist/vue.min.js"></script>
+    <script type="text/javascript" src="js/events-vue.js"></script>
+    <script type="text/javascript" src="js/save_to_db.js"></script>
+  </body>
+  </html>
