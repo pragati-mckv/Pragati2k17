@@ -31,7 +31,7 @@ var app = new Vue({
 		cs:5,
 		fifa:1,
 		nfs:1,
-		milimitia:2,
+		milimitia:3,
 		chess:1,
 		enigma:3,
 		treasurehunt:3,
